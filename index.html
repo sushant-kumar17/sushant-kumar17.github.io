@@ -31,10 +31,7 @@
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
+				<i class="fa fa-bars"></i>
 			</button>
 			<a class="navbar-brand topnav" href="/"> <img src="img/logo.png" alt="Sushant Kumar logo"></a>
 		</div>
@@ -52,7 +49,7 @@
     	<div class="top-section">
     		<h1> Sushant Kumar </h1>
     		<h2> I Love building great products </h2>
-    		<a href="#about" class="btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a>
+    		<!-- <a href="#about" class="btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a> -->
     	</div>
     </div>
 
@@ -143,7 +140,7 @@
 			<div class="clearfix"></div>
         </div>
     </section>
-     <section class="content-section text-img bg-white">
+     <section id="contact" class="content-section text-img bg-white">
 		<div class="top-angle top-angle-white"></div>
         <div class="main-container">
            <div class="col-md-8 col-md-offset-2">
@@ -174,17 +171,55 @@
         </div>
     </footer>
 
-	<script src="js/min-script.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
 
 
     <script>
+    // jQuery to collapse the navbar on scroll
+function collapseNavbar() {
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
+}
+
+$(window).scroll(collapseNavbar);
+//$(document).ready(collapseNavbar);
+
+// jQuery for page scrolling feature - requires jQuery Easing plugin
+$(function() {
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+    });
+});
+
+// Closes the Responsive Menu on Menu Item Click
+$('.navbar-collapse ul li a').click(function() {
+  if ($(this).attr('class') != 'dropdown-toggle active' && $(this).attr('class') != 'dropdown-toggle') {
+    $('.navbar-toggle:visible').click();
+  }
+});
     	$(document).ready(function () {
     		if($(window).width() > 727) {
     			$(".top-angle").css("border-right-width",$(window).width());
 				$(".top-angle-transparent").css("border-left-width",$(window).width());
     		}
+    		else {
+    			$(".top-angle").css("border-right-width",0);
+				$(".top-angle-transparent").css("border-left-width",0);
+    		}
+  
+    		collapseNavbar();
 		});
-    </script>
+</script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

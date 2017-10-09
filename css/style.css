@@ -41,7 +41,11 @@ p {
     -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
 }
-
+.navbar-toggle {
+    padding: 0px 10px;
+    margin-top: 8px;
+    font-size: 2em;
+}
 .navbar-brand {
     padding:0;
 }
